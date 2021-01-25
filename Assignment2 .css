@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Jura&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+header{
+    height: auto;
+    margin:0;
+    padding-bottom: 10px;
+    background:rgba(0, 0, 0);
+}
+header p{
+    display: block;
+    margin: auto;
+    font-family: "SegoeUI Regular","Sans","serif";
+    font-size:24.5px;
+    padding:20px 20px;
+    color: white;
+}
+
+ul {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  list-style-type: none;  
+  margin:0;
+  flex-wrap:wrap;
+}
+li {
+  padding: 15px 75px 0px 0px;
+}
+
+header a{
+  position: relative;
+  font-size: 20px;
+  display: block;
+  padding: 4px 0;
+  font-family: Lato, sans-serif;
+  color: #ecf0f1;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+header a:after {
+  position: absolute;
+  content: "";
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #3498db;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s;
+}
+
+header a:hover {
+  color: #95a5a6;
+}
+
+:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+body{
+    font-family: 'Jura', sans-serif;
+    /* background-image: url("https://wallpapercave.com/wp/wp4712646.jpg");
+    background-image: url("https://i.pinimg.com/originals/96/7e/5a/967e5a1e0d7078684ffc3fd1e4e64811.jpg");   */
+    background-image: url("https://www.shutterstock.com/blog/wp-content/uploads/sites/5/2020/05/shutterstock_1556534186.jpg?w=750");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y:top ; 
+    margin: 0;
+}
+.search-box{
+  position: absolute;
+  flex-wrap: nowrap;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: rgba(0, 0, 0, 0.603);
+  height: 40px;
+  border-radius: 40px;
+  padding: 10px;
+  display: flex;
+}
+.search-btn{
+  color:#00a8ff;
+  float: right;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background:  rgba(0, 0, 0, 0.);
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  transition-duration: 0.4s;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(184, 184, 184);
+}
+.search-box:hover >.search-txt{
+  width:240px;
+  padding: 0 6px;
+}
+
+.search-box:hover >.search-btn{
+  background:white;
+}
+
+.search-txt{
+  border:none;
+  background:none;
+  outline:none;
+  float: left;
+  padding: 0;
+  color:rgb(255, 255, 255);
+  font-size: 16px;
+  transition:0.4s;
+  line-height: 40px;
+  width:0px;
+}
+.page{
+  color: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-height: 1200px;
+}
+
+.anime-card{
+  border-radius: 30px; 
+  background-color: rgba(0, 0, 0, 0.603);
+  padding: 40px;
+  width: 450px;
+  margin: 190px 60px 100px ;
+  text-align: center;
+}
+
+.anime-card:hover{
+    transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    transition: transform 0.25s;
+}
+
+.anime-card img{
+  display: block;
+  margin: auto;
+  border-radius: 30px;
+  width: 300px;
+  height: 400px;
+  object-fit: cover;
+  object-position: center;
+}
+
+footer{
+    color: white;
+    background-color: rgba(0, 0, 0, 0.746);
+    padding: 5px 5px;
+    width : auto;
+}
+
+footer p{
+  color:#ecf0f1;
+  font-size: 20px;
+  text-align: center;
+}
+
+.button-container{
+  display:flex;
+  justify-content: center;
+  flex-direction: row;
+  margin: auto;
+  margin-bottom: 40px
+}
+
+.next-button{
+  border-radius: 50%;
+  background-color: #000000bb;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 100px
+
+}
+.previous-button{
+  border-radius: 50%;
+  background-color: #000000bb;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px; 
+}
+
+#animeId a:link {
+  color: rgb(255, 255, 255);
+  background-color: transparent;
+  text-decoration: none;
+}
+#animeId a:visited {
+  color: rgb(236, 161, 246);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 560px) {
+  .topnav{
+    height:145px;
+  }
+
+  .search-box{
+    top: 20%;
+    left: 50%;
+  }
+  
+  .anime-card{
+    margin-top: 200px;
+    margin-bottom: 50px;
+  }
+}
