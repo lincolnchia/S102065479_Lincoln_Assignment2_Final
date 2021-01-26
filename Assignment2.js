@@ -84,7 +84,7 @@ function animeList(page){
         for (i=0;i<data["data"].length;i++){
             console.log(data["data"][i]);
             console.log("in loop: "+i)
-            createDiv(newdata["data"][i])
+            createDiv(data["data"][i])
         }
         function createDiv(anime){
             // variables needed for div
