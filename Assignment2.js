@@ -1,7 +1,8 @@
 page = 0
 
 animeList(page);
-findAnime(page)
+findAnimeEnter(page);
+findAnimeClick(page);
 
 document.getElementById('nextpage').addEventListener('click', function(){
     $("#mainpage").empty()
@@ -23,7 +24,59 @@ document.getElementById('preivouspage').addEventListener('click', function(){
 
 
 
-function findAnime(page){
+function findAnimeEnter(page){
+    document.getElementById('search-txt').addEventListener("keyup", function(event){
+        if (event.keyCode == 13) {
+        $("#mainpage").empty()
+        const searchdata = document.getElementById('search-txt').value
+        convertedData = searchdata.replace(/\s/g,"%20")
+        fetch("https://kitsu.io/api/edge/anime?filter[text]="+searchdata)
+        .then(res=>res.json())
+        .then(newdata=>{
+            for (i=0;i<newdata["data"].length;i++){
+                console.log(newdata["data"][i]);
+                console.log("in loop: "+i)
+                createDiv(newdata["data"][i])
+            }
+            function createDiv(anime){
+                // variables needed for div
+                let anime_id = anime["id"]
+                let en_title = anime["attributes"]['canonicalTitle']
+                let jp_title = anime["attributes"]['titles']['ja_jp']
+                let age_rating = anime["attributes"]["ageRating"]
+                let age_Rguide = anime["attributes"]["ageRatingGuide"]
+                let coverImageLink = anime["attributes"]["posterImage"]["original"]
+                let air_date = anime["attributes"]["startDate"]
+                let status = anime["attributes"]["status"]
+    
+                // creating div
+                animeDiv = document.createElement('div');
+                animeDiv.classList.add('anime-card')
+                animeDiv.id = 'animeId';
+                animeDiv.innerHTML = "\
+                <h3>"+anime_id+"</h3>\
+                <h1>"+en_title+"</h1>\
+                <h2>"+jp_title+"</h2>\
+                <img src='"+coverImageLink+"' alt='anime-cover-picture'>\
+                <h3>Air Date: "+air_date+"</h3>\
+                <h3>Status: "+status+"</h3>\
+                <h3>Age Rating: "+age_rating+"</h3>\
+                <h3>Age Guide: "+age_Rguide+"</h3>\
+                ";
+                $(".page").append(animeDiv);
+                document.getElementById("animeId").onclick = function() {directLink()};
+                function directLink(){
+                    console.log("hi")
+                    let slug = anime["attributes"]["slug"]
+                    location.replace("https://kitsu.io/api/edge/anime/"+slug)
+                }
+            }
+        })
+        $(".button-container").empty()
+        }
+    })
+}
+function findAnimeClick(page){
     document.getElementById('search-btn').addEventListener('click', function(){
         $("#mainpage").empty()
         const searchdata = document.getElementById('search-txt').value
@@ -73,8 +126,6 @@ function findAnime(page){
         $(".button-container").empty()
     })
 }
-
-
 
 
 function animeList(page){
